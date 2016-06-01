@@ -36,7 +36,7 @@ public class GroupCreationTest {
         initGroupCreation();
         fillGroupForm(new GroupData("group", "header", "footer"));
         submitGroupCreation();
-        gotoGroupPage();
+        returnToGroupPage();
     }
 
     private void submitGroupCreation() {
@@ -61,6 +61,10 @@ public class GroupCreationTest {
 
     private void gotoGroupPage() {
         wd.findElement(By.linkText("groups")).click();
+    }
+
+    private void returnToGroupPage() {
+        wd.findElement(By.linkText("group page")).click();
     }
 
     @AfterMethod
