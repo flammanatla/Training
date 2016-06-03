@@ -30,4 +30,20 @@ public class GroupHelper extends HelperBase{
   public void returnToGroupPage() {
     click(By.linkText("group page"));
   }
+
+  public void selectGroups() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedGroups() {
+    click(By.xpath("//div[@id='content']/form/input[5]"));
+  }
+
+  public void modifySelectedGroups() {
+    click(By.xpath("//div[@id='content']/form/input[6]"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
+  }
 }
