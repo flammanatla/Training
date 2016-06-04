@@ -1,14 +1,15 @@
 package uk.stqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by natla on 02/06/2016.
  */
+
 public class SessionHelper extends HelperBase{
 
-  public SessionHelper(FirefoxDriver wd) {
+  public SessionHelper(WebDriver wd) {
     super(wd);
   }
 

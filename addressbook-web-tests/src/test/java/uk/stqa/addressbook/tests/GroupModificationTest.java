@@ -1,8 +1,6 @@
 package uk.stqa.addressbook.tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Quotes;
 import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.GroupData;
 
