@@ -21,6 +21,10 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("home page"));
   }
 
+  public void gotoAddNewContactPage() {
+    click(By.linkText("add new"));
+  }
+
   public void saveContact() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
@@ -30,7 +34,7 @@ public class ContactHelper extends HelperBase{
     type(By.name("lastname"), contactData.getLastName());
 
     if (create_or_modify){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -54,5 +58,16 @@ public class ContactHelper extends HelperBase{
 
   public void updateContact() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+  }
+
+  public void createContact(ContactData contact, boolean flag) {
+    gotoAddNewContactPage();
+    fillContactForm(contact, flag);
+    saveContact();
+    returnToHomePage();
+  }
+
+  public boolean contactAvailable() {
+    return isElementPresent(By.name("selected[]"));
   }
 }

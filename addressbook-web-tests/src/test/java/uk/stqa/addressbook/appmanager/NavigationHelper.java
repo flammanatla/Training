@@ -13,10 +13,6 @@ public class NavigationHelper extends HelperBase{
     super (wd);
   }
 
-  public void gotoAddNewContactPage() {
-    click(By.linkText("add new"));
-  }
-
   public void gotoGroupPage() {
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).equals("Groups")
