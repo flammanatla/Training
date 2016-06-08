@@ -14,7 +14,7 @@ public class GroupModificationTest extends TestBase {
     app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().selectGroups();
     app.getGroupHelper().modifySelectedGroups();
-    app.getGroupHelper().fillGroupForm(new GroupData("groupEdited", "headerEdited", "footerEdited"));
+    app.getGroupHelper().fillGroupForm(new GroupData("groupEdited", "headerEdited", null));
     app.getGroupHelper().selectFromDropDownList(By.name("group_parent_id"), 1);
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();

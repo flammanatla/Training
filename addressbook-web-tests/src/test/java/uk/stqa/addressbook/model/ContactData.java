@@ -3,20 +3,16 @@ package uk.stqa.addressbook.model;
 public class ContactData {
   private final String firstName;
   private final String lastName;
-  private final String nickname;
-  private final String title;
-  private final String company;
   private final String address;
+  private String group;
   private final String homeNumber;
   private final String email;
 
-  public ContactData(String firstName, String lastName, String nickname, String title, String company, String address, String homeNumber, String email) {
+  public ContactData(String firstName, String lastName, String address, String group, String homeNumber, String email) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
     this.address = address;
+    this.group = group;
     this.homeNumber = homeNumber;
     this.email = email;
   }
@@ -29,18 +25,6 @@ public class ContactData {
     return lastName;
   }
 
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public String getCompany() {
-    return company;
-  }
-
   public String getAddress() {
     return address;
   }
@@ -51,5 +35,9 @@ public class ContactData {
 
   public String getEmail() {
     return email;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }

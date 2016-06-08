@@ -28,6 +28,7 @@ public class GroupHelper extends HelperBase{
     click(By.name("new"));
   }
 
+  //link appeared after group creation/deletion/modification
   public void returnToGroupPage() {
     click(By.linkText("group page"));
   }
