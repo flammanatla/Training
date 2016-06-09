@@ -30,11 +30,17 @@ public class ContactHelper extends HelperBase{
   }
 
   public void fillContactForm(ContactData contactData, boolean create_or_modify) {
-    type(By.name("firstname"),contactData.getFirstName());
+    type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
 
-    if (create_or_modify){
-      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //selectByVisibleText(contactData.getGroup());
+    if (create_or_modify) {
+      String group = contactData.getGroup();
+      Select select = new Select(wd.findElement(By.name("new_group")));
+      if (group == null) {
+        select.selectByIndex(0); //[none] will be selected, help avoid NullPointerException
+      } else {
+        select.selectByVisibleText(group); // specified in tests group will be selected
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -60,9 +66,9 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void createContact(ContactData contact, boolean flag) {
+  public void createContact(ContactData contact) {
     gotoAddNewContactPage();
-    fillContactForm(contact, flag);
+    fillContactForm(contact, true);
     saveContact();
     returnToHomePage();
   }
