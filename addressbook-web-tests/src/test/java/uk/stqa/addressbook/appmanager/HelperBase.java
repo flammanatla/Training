@@ -31,8 +31,8 @@ public class HelperBase {
     }
   }
 
-  public void selectFromDropDownList(By locator, int option) {
-    new Select(wd.findElement(locator)).selectByIndex(option);
+  public void selectFromDropDownList(By locator, String value) {
+    new Select(wd.findElement(locator)).selectByValue(value);
   }
 
   public boolean isAlertPresent() {

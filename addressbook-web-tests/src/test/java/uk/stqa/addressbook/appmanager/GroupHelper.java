@@ -24,6 +24,7 @@ public class GroupHelper extends HelperBase{
 
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getGroupName());
+    selectFromDropDownList(By.name("group_parent_id"), "none");
     type(By.name("group_header"), groupData.getHeader());
     type(By.name("group_footer"), groupData.getFooter());
   }

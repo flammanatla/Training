@@ -19,7 +19,7 @@ public class ContactDeletionTest extends TestBase {
       app.getContactHelper().createContact(new ContactData("First", "Last", "scotland yard", null, "1234567", "first.last@dreamcompany.com"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContacts(before.size()-1);
+    app.getContactHelper().selectContacts(before.size() - 1);
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().isAlertPresent();
     app.getNavigationHelper().gotoHomePage();
@@ -27,9 +27,6 @@ public class ContactDeletionTest extends TestBase {
     Assert.assertEquals(after.size(), before.size() - 1);
 
     before.remove(before.size() - 1);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 }
