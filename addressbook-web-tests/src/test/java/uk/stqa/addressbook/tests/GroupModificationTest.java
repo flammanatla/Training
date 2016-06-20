@@ -25,7 +25,6 @@ public class GroupModificationTest extends TestBase {
     app.getGroupHelper().modifySelectedGroups();
     GroupData group = new GroupData(before.get(before.size() -1).getId(), "groupEdited", "headerEdited", null);
     app.getGroupHelper().fillGroupForm(group);
-    //app.getGroupHelper().selectFromDropDownList(By.name("group_parent_id"), 0); // do not use dropdown because visible group name will be "groupEdited (group)"
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupHelper().getGroupList();
