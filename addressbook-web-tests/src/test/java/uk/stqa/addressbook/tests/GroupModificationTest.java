@@ -1,12 +1,11 @@
 package uk.stqa.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -14,23 +13,24 @@ import java.util.List;
  */
 public class GroupModificationTest extends TestBase {
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().groupPage();
+    if (app.group().list().size() == 0) {
+      app.group().create(new GroupData("group", "header", "header"));
+    }
+  }
+
   @Test
   public void testGroupModification(){
-    app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().groupAvailable()) {
-      app.getGroupHelper().createGroup(new GroupData("group", "header", "header"));
-    }
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroups(before.size() - 1);
-    app.getGroupHelper().modifySelectedGroups();
-    GroupData group = new GroupData(before.get(before.size() -1).getId(), "groupEdited", "headerEdited", null);
-    app.getGroupHelper().fillGroupForm(group);
-    app.getGroupHelper().submitGroupModification();
-    app.getGroupHelper().returnToGroupPage();
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().list();
+    int index = before.size() - 1;
+    GroupData group = new GroupData(before.get(index).getId(), "groupEdited", "headerEdited", null);
+    app.group().modify(index, group);
+    List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     before.add(group);
     Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);
@@ -38,4 +38,5 @@ public class GroupModificationTest extends TestBase {
     Assert.assertEquals(before, after);
 
   }
+
 }
