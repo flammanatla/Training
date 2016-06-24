@@ -1,32 +1,16 @@
 package uk.stqa.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstName;
-  private final String lastName;
-  private final String address;
+  private int id = Integer.MAX_VALUE;
+  private String firstName;
+  private String lastName;
+  private String address;
   private String group;
-  private final String homeNumber;
-  private final String email;
+  private String homeNumber;
+  private String email;
 
-  public ContactData(int id, String firstName, String lastName, String address, String group, String homeNumber, String email) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.address = address;
-    this.group = group;
-    this.homeNumber = homeNumber;
-    this.email = email;
-  }
-
-  public ContactData(String firstName, String lastName, String address, String group, String homeNumber, String email) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.address = address;
-    this.group = group;
-    this.homeNumber = homeNumber;
-    this.email = email;
+  public int getId() {
+    return id;
   }
 
   public String getFirstName() {
@@ -53,8 +37,39 @@ public class ContactData {
     return group;
   }
 
-  public int getId() {
-    return id;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withHomeNumber(String homeNumber) {
+    this.homeNumber = homeNumber;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
   }
 
   @Override

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.GroupData;
+import uk.stqa.addressbook.tests.TestBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void editContact(int index) {
+  public void editSelectedContact(int index) {
     wd.findElements(By.xpath("//tr[@name='entry']//td[8]")).get(index).click();
   }
 
@@ -71,25 +72,39 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     gotoAddNewContactPage();
     fillContactForm(contact, true);
     saveContact();
     returnToHomePage();
+
+  }
+
+  public void edit(int indexOfLastElement, ContactData contact) {
+    editSelectedContact(indexOfLastElement);
+    fillContactForm(contact, false);
+    updateContact();
+    returnToHomePage();
+  }
+
+  public void delete(int index) {
+    selectContacts(index);
+    deleteSelectedContacts();
+    isAlertPresent();
   }
 
   public boolean contactAvailable() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element: elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();
       String firstName = element.findElement(By.xpath(".//td[3]")).getText();
-      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, "group1");
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
       contacts.add(contact);
     }
     return contacts;
