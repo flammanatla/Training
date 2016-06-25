@@ -1,16 +1,12 @@
 package uk.stqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import uk.stqa.addressbook.model.ContactData;
-import uk.stqa.addressbook.model.GroupData;
-import uk.stqa.addressbook.tests.TestBase;
-
-import java.util.ArrayList;
+import uk.stqa.addressbook.model.Contacts;
 import java.util.List;
 
 /**
@@ -60,6 +56,14 @@ public class ContactHelper extends HelperBase{
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  private void selectContactsById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+  private void editSelectedContactById(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
+
   public void deleteSelectedContacts() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -77,18 +81,17 @@ public class ContactHelper extends HelperBase{
     fillContactForm(contact, true);
     saveContact();
     returnToHomePage();
-
   }
 
-  public void edit(int indexOfLastElement, ContactData contact) {
-    editSelectedContact(indexOfLastElement);
+  public void edit(ContactData contact) {
+    editSelectedContactById(contact.getId());
     fillContactForm(contact, false);
     updateContact();
     returnToHomePage();
   }
 
-  public void delete(int index) {
-    selectContacts(index);
+  public void delete(ContactData contact) {
+    selectContactsById(contact.getId());
     deleteSelectedContacts();
     isAlertPresent();
   }
@@ -97,8 +100,8 @@ public class ContactHelper extends HelperBase{
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element: elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
