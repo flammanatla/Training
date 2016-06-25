@@ -5,10 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uk.stqa.addressbook.model.GroupData;
 import uk.stqa.addressbook.model.Groups;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 /**
  * Created by natla on 02/06/2016.
