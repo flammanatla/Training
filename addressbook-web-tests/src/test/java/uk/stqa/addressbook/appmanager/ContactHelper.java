@@ -67,6 +67,10 @@ public class ContactHelper extends HelperBase{
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
+  private void viewSelectedContactById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+  }
+
   public void deleteSelectedContacts() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -127,6 +131,13 @@ public class ContactHelper extends HelperBase{
             withEmail(email).withEmail2(email2).withEmail3(email3);
   }
 
+  public ContactData infoFromDetailsPage(ContactData contact) {
+    viewSelectedContactById(contact.getId());
+    String content = wd.findElement(By.id("content")).getText();
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withAllInfo(content);
+  }
+
   public Contacts contactsCache = null;
 
   public Contacts all() {
@@ -143,7 +154,8 @@ public class ContactHelper extends HelperBase{
       String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).
-              withAddress(address).withAllPhones(allPhones).withAllEmails(allEmails);
+              withAddress(address).withAllPhones(allPhones).withAllEmails(allEmails).
+              withAllInfo(lastName+firstName+address+allEmails+allPhones);
       contactsCache.add(contact);
     }
     return new Contacts(contactsCache);
