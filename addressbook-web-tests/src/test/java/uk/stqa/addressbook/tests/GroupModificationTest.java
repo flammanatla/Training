@@ -1,11 +1,15 @@
 package uk.stqa.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.GroupData;
+import uk.stqa.addressbook.model.Groups;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 /**
  * Created by natla on 03/06/2016.
@@ -22,18 +26,15 @@ public class GroupModificationTest extends TestBase {
 
   @Test
   public void testGroupModification(){
-    Set<GroupData> before = app.group().all();
+    Groups before = app.group().all();
     GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData().
             withId(modifiedGroup.getId()).withName("groupEdited").withHeader("headerEdited").withFooter("footerEdited");
     app.group().modify(group);
-    Set<GroupData> after = app.group().all();
+    Groups after = app.group().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(modifiedGroup);
-    before.add(group);
-    Assert.assertEquals(before, after);
-
+    assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 
 }
