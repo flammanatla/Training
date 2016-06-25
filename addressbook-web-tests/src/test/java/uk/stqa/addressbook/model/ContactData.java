@@ -6,8 +6,16 @@ public class ContactData {
   private String lastName;
   private String address;
   private String group;
-  private String homeNumber;
+  private String homeT;
+  private String mobileT;
+  private String workT;
+  private String allPhones;
   private String email;
+  private String email2;
+  private String email3;
+  private String allEmails;
+
+
 
   public int getId() {
     return id;
@@ -25,12 +33,36 @@ public class ContactData {
     return address;
   }
 
-  public String getHomeNumber() {
-    return homeNumber;
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getHomeT() {
+    return homeT;
+  }
+
+  public String getMobileT() {
+    return mobileT;
+  }
+
+  public String getWorkT() {
+    return workT;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public String getEmail() {
     return email;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
   }
 
   public String getGroup() {
@@ -62,13 +94,44 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHomeNumber(String homeNumber) {
-    this.homeNumber = homeNumber;
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withHomeT(String homeT) {
+    this.homeT = homeT;
+    return this;
+  }
+
+
+  public ContactData withMobileT(String mobileT) {
+    this.mobileT = mobileT;
+    return this;
+  }
+
+  public ContactData withWorkT(String workT) {
+    this.workT = workT;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
     return this;
   }
 
   public ContactData withEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
     return this;
   }
 
@@ -101,4 +164,5 @@ public class ContactData {
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
+
 }

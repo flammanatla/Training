@@ -18,7 +18,7 @@ public class ContactModificationTest extends TestBase {
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().
               withFirstName("First").withLastName("Last").withAddress("scotland yard").
-              withHomeNumber("1234567").withEmail("first.last@dreamcompany.com"));
+              withHomeT("1234567").withEmail("first.last@dreamcompany.com"));
     }
   }
 
@@ -30,10 +30,10 @@ public class ContactModificationTest extends TestBase {
     ContactData contact = new ContactData().
             withId(modifiedContact.getId()).
             withFirstName("First").withLastName("Last").withAddress("scotland yard").
-            withHomeNumber("1234567").withEmail("first.last@dreamcompany.com");
+            withHomeT("1234567").withEmail("first.last@dreamcompany.com");
     app.contact().edit(contact);
+    assertThat(app.contact().getContactConuter(), equalTo(before.size()));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size()));
 
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(modifiedContact)));
   }
