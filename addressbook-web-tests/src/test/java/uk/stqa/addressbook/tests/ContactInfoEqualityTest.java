@@ -61,7 +61,7 @@ public class ContactInfoEqualityTest extends TestBase {
   private String mergeDetailInfo(ContactData contact) {
     return asList(contact.getInfo())
             .stream().filter((s) -> ! s.equals(""))
-            .map(ContactInfoEqualityTest::cleanedDetails)
+            .map(ContactInfoEqualityTest::cleanedInfo)
             .collect(Collectors.joining(""));
   }
 
@@ -70,7 +70,7 @@ public class ContactInfoEqualityTest extends TestBase {
             contact.getHomeT(), contact.getMobileT(), contact.getWorkT(),
             contact.getEmail(), contact.getEmail2(), contact.getEmail3())
             .stream().filter((s) -> ! s.equals(""))
-            .map(ContactInfoEqualityTest::cleanedDetails)
+            .map(ContactInfoEqualityTest::cleanedInfo)
             .collect(Collectors.joining(""));
   }
 
@@ -78,7 +78,7 @@ public class ContactInfoEqualityTest extends TestBase {
     return phones.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
-  public static String cleanedDetails(String info) {
+  public static String cleanedInfo(String info) {
     return info.replaceAll("\\s", "").replaceAll("(H|M|W):", "").replaceAll("\\(www.*?\\)", "");
   }
 }
