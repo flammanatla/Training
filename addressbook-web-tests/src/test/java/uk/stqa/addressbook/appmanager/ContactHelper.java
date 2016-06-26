@@ -34,6 +34,7 @@ public class ContactHelper extends HelperBase{
   public void fillContactForm(ContactData contactData, boolean create_or_modify) {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (create_or_modify) {
       String group = contactData.getGroup();
@@ -110,7 +111,7 @@ public class ContactHelper extends HelperBase{
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getContactConuter() {
+  public int getContactCounter() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
