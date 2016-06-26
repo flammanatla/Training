@@ -1,9 +1,18 @@
 package uk.stqa.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("group")
 public class GroupData {
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+  @Expose
   private String name;
+  @Expose
   private String header;
+  @Expose
   private String footer;
 
   public int getId() {
@@ -30,7 +39,7 @@ public class GroupData {
     return this;
   }
 
-  public String getGroupName() {
+  public String getName() {
     return name;
   }
 
