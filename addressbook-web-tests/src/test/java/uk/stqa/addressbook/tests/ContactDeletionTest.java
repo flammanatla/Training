@@ -1,15 +1,9 @@
 package uk.stqa.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import sun.jvm.hotspot.utilities.AddressOps;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
-
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,7 +29,7 @@ public class ContactDeletionTest extends TestBase {
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     app.goTo().HomePage();
-    assertThat(app.contact().getContactConuter(), equalTo(before.size() - 1));
+    assertThat(app.contact().getContactCounter(), equalTo(before.size() - 1));
     Contacts after = app.contact().all();
 
     assertThat(after, equalTo(before.without(deletedContact)));
