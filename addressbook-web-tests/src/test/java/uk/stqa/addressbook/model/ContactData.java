@@ -1,22 +1,30 @@
 package uk.stqa.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
+import java.io.File;
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
+  @Expose
   private String firstName;
+  @Expose
   private String lastName;
+  @Expose
   private String address;
   private String group;
+  @Expose
   private String homeT;
   private String mobileT;
   private String workT;
   private String allPhones;
+  @Expose
   private String email;
   private String email2;
   private String email3;
   private String allEmails;
   private String allInfo;
-
-
+  private File photo;
 
   public int getId() {
     return id;
@@ -74,6 +82,9 @@ public class ContactData {
     return allInfo;
   }
 
+  public File getPhoto() {
+    return photo;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -143,6 +154,11 @@ public class ContactData {
 
   public ContactData withAllInfo(String allInfo) {
     this.allInfo = allInfo;
+    return this;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
     return this;
   }
 
