@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
 
+import java.io.IOException;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
@@ -29,8 +31,8 @@ public class ContactModificationTest extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData().
             withId(modifiedContact.getId()).
-            withFirstName("FirstEdit").withLastName("LastEdit").withAddress("scotland yard").
-            withHomeT("1234567Edit").withEmail("first.last@dreamcompany.comEdit");
+            withFirstName("First").withLastName("Last").withAddress("scotland yard").
+            withHomeT("1234567").withEmail("first.last@dreamcompany.com");
     app.contact().edit(contact);
     assertThat(app.contact().getContactCounter(), equalTo(before.size()));
     Contacts after = app.contact().all();

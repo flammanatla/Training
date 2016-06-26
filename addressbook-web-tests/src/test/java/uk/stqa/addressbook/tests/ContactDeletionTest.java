@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
 
+import java.io.IOException;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -15,6 +17,7 @@ public class ContactDeletionTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
+    app.goTo().HomePage();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().
               withFirstName("First").withLastName("Last").withAddress("scotland yard").
@@ -24,7 +27,6 @@ public class ContactDeletionTest extends TestBase {
 
   @Test
   public void testContactDeletion(){
-    app.goTo().HomePage();
     Contacts before = app.contact().all();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
