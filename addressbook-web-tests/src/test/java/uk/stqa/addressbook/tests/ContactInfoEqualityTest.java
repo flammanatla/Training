@@ -16,7 +16,7 @@ public class ContactInfoEqualityTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.contact().create(new ContactData().
               withFirstName("First").withLastName("Last").withAddress("scotland yard").
               withHomeT("123").withMobileT("456").withWorkT("789").
@@ -36,7 +36,7 @@ public class ContactInfoEqualityTest extends TestBase {
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
   }
 
-  @Test
+  @Test(enabled = false)
   public void testContactDetailsPage() {
     app.goTo().HomePage();
     ContactData contact = app.contact().all().iterator().next();
