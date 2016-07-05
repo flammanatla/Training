@@ -58,6 +58,7 @@ public class ContactData {
   @Transient
   private String allInfo;
 
+  @Expose
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
@@ -118,8 +119,8 @@ public class ContactData {
     return allInfo;
   }
 
-  public File getPhoto() {
-    return new File(photo);
+  public String getPhoto() {
+    return photo;
   }
 
   public ContactData withId(int id) {
@@ -193,8 +194,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
+  public ContactData withPhoto(String photo) {
+    this.photo = photo;
     return this;
   }
 

@@ -15,8 +15,7 @@ public class ContactCreationTest extends TestBase {
   public void testContactCreation(ContactData contact) {
     app.goTo().HomePage();
     Contacts before = app.contact().all();
-    File photo = new File("src/test/resources/logo.jpeg");
-    app.contact().create(contact.withPhoto(photo));
+    app.contact().create(contact);
     assertThat(app.contact().getContactCounter(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
 

@@ -30,7 +30,7 @@ public class ContactDataGenerator {
                     .withLastName(String.format("Last %s", i))
                     .withAddress("Тридевятое царство\n" + "Дуб у Лукоморья №13\n" + "Ученому Коту")
                     .withEmail(String.format("first%s.last%s@dreamcompany.com", i, i))
-                    .withHomeT(String.format("123 %s", i)));
+                    .withHomeT(String.format("123 %s", i)).withPhoto("src/test/resources/logo.jpeg"));
         }
         return contacts;
     }

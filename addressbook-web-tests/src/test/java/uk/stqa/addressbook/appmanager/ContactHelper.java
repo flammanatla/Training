@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
+
+import java.io.File;
 import java.util.List;
 
 /**
@@ -34,7 +36,7 @@ public class ContactHelper extends HelperBase{
   public void fillContactForm(ContactData contactData, boolean create_or_modify) {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
-    attach(By.name("photo"), contactData.getPhoto());
+    attach(By.name("photo"), new File(contactData.getPhoto()));
 
     if (create_or_modify) {
       String group = contactData.getGroup();

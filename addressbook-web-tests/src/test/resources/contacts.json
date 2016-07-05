@@ -4,69 +4,23 @@
     "lastName": "Last 0",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
     "homeT": "123 0",
-    "email": "first0.last0@dreamcompany.com"
+    "email": "first0.last0@dreamcompany.com",
+    "photo": "src/test/resources/logo.jpeg"
   },
   {
     "firstName": "First 1",
     "lastName": "Last 1",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
     "homeT": "123 1",
-    "email": "first1.last1@dreamcompany.com"
+    "email": "first1.last1@dreamcompany.com",
+    "photo": "src/test/resources/logo.jpeg"
   },
   {
     "firstName": "First 2",
     "lastName": "Last 2",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
     "homeT": "123 2",
-    "email": "first2.last2@dreamcompany.com"
-  },
-  {
-    "firstName": "First 3",
-    "lastName": "Last 3",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 3",
-    "email": "first3.last3@dreamcompany.com"
-  },
-  {
-    "firstName": "First 4",
-    "lastName": "Last 4",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 4",
-    "email": "first4.last4@dreamcompany.com"
-  },
-  {
-    "firstName": "First 5",
-    "lastName": "Last 5",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 5",
-    "email": "first5.last5@dreamcompany.com"
-  },
-  {
-    "firstName": "First 6",
-    "lastName": "Last 6",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 6",
-    "email": "first6.last6@dreamcompany.com"
-  },
-  {
-    "firstName": "First 7",
-    "lastName": "Last 7",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 7",
-    "email": "first7.last7@dreamcompany.com"
-  },
-  {
-    "firstName": "First 8",
-    "lastName": "Last 8",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 8",
-    "email": "first8.last8@dreamcompany.com"
-  },
-  {
-    "firstName": "First 9",
-    "lastName": "Last 9",
-    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 9",
-    "email": "first9.last9@dreamcompany.com"
+    "email": "first2.last2@dreamcompany.com",
+    "photo": "src/test/resources/logo.jpeg"
   }
 ]
