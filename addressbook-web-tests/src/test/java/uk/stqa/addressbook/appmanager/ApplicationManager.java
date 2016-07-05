@@ -17,52 +17,58 @@ import java.util.concurrent.TimeUnit;
  * Created by natla on 02/06/2016.
  */
 public class ApplicationManager {
-  private final String browser;
-  private final Properties properties;
-  WebDriver wd;
+    private final String browser;
+    private final Properties properties;
+    WebDriver wd;
 
-  private ContactHelper contactHelper;
-  private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper;
-  private SessionHelper sessionHelper;
+    private ContactHelper contactHelper;
+    private NavigationHelper navigationHelper;
+    private GroupHelper groupHelper;
+    private SessionHelper sessionHelper;
+    private DbHelper dbHelper;
 
-  public ApplicationManager(String browser) {
-    this.browser = browser;
-    properties = new Properties();
-  }
-
-  public void init() throws IOException {
-    String target = System.getProperty("target", "local");
-    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
-    if (Objects.equals(browser, BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    } else if (Objects.equals(browser, BrowserType.CHROME)) {
-      wd = new ChromeDriver();
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+        properties = new Properties();
     }
 
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.baseURL"));
-    groupHelper = new GroupHelper(wd);
-    contactHelper = new ContactHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
-    sessionHelper.login(properties.getProperty("login"), properties.getProperty("password"));
-  }
+    public void init() throws IOException {
 
-  public void stop() {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+        dbHelper = new DbHelper();
+
+        if (Objects.equals(browser, BrowserType.FIREFOX)) {
+            wd = new FirefoxDriver();
+        } else if (Objects.equals(browser, BrowserType.CHROME)) {
+            wd = new ChromeDriver();
+        }
+
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.get(properties.getProperty("web.baseURL"));
+        groupHelper = new GroupHelper(wd);
+        contactHelper = new ContactHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.login(properties.getProperty("login"), properties.getProperty("password"));
+    }
+
+    public void stop() {
     wd.quit();
   }
 
-  public NavigationHelper goTo() {
+    public NavigationHelper goTo() {
     return navigationHelper;
   }
 
-  public GroupHelper group() {
+    public GroupHelper group() {
     return groupHelper;
   }
 
-  public ContactHelper contact() {
+    public ContactHelper contact() {
     return contactHelper;
   }
+
+    public DbHelper db() {return dbHelper;}
 }

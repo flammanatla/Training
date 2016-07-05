@@ -20,7 +20,8 @@ public class ContactInfoEqualityTest extends TestBase {
       app.contact().create(new ContactData().
               withFirstName("First").withLastName("Last").withAddress("scotland yard").
               withHomeT("123").withMobileT("456").withWorkT("789").
-              withEmail("first.last@dreamcompany.com").withEmail2("qa@qa.com").withEmail3("qa-test@qa.com"));
+              withEmail("first.last@dreamcompany.com").withEmail2("qa@qa.com").withEmail3("qa-test@qa.com").
+              withPhoto("src/test/resources/logo.jpeg"));
     }
   }
 

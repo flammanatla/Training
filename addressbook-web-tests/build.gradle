@@ -20,6 +20,9 @@ task testGroups (type : Test) {
     useTestNG() {
         suites 'src/test/resources/testng-groups.xml'
     }
+    if (project.hasProperty("target")) {
+        systemProperty 'target', "${target}"
+    }
 }
 
 task testContacts (type : Test) {
