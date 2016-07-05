@@ -13,4 +13,6 @@ gradle-app.setting
 workspace.xml
 *.csv
 *.xml
+*.json
 out
+addressbook-web-tests/src/test/logs
