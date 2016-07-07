@@ -27,11 +27,11 @@ public class ContactData {
   @Transient
   private String group;
 
-  @Expose
   @Column(name = "home")
   @Type(type = "text")
   private String homeT;
 
+  @Expose
   @Column(name = "mobile")
   @Type(type = "text")
   private String mobileT;
@@ -205,6 +205,7 @@ public class ContactData {
             "lastName='" + lastName + '\'' +
             ", firstName='" + firstName + '\'' +
             ", id=" + id +
+            ", email='" + email + '\'' +
             '}';
   }
 
@@ -217,7 +218,9 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+    if (mobileT != null ? !mobileT.equals(that.mobileT) : that.mobileT != null) return false;
+    return email != null ? email.equals(that.email) : that.email == null;
 
   }
 
@@ -226,6 +229,8 @@ public class ContactData {
     int result = id;
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    result = 31 * result + (mobileT != null ? mobileT.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
     return result;
   }
 }

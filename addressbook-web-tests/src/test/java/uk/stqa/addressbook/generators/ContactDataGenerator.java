@@ -29,8 +29,9 @@ public class ContactDataGenerator {
             contacts.add(new ContactData().withFirstName(String.format("First %s", i))
                     .withLastName(String.format("Last %s", i))
                     .withAddress("Тридевятое царство\n" + "Дуб у Лукоморья №13\n" + "Ученому Коту")
+                    .withMobileT(String.format("123 %s", i))
                     .withEmail(String.format("first%s.last%s@dreamcompany.com", i, i))
-                    .withHomeT(String.format("123 %s", i)).withPhoto("src/test/resources/logo.jpeg"));
+                    .withPhoto("src/test/resources/logo.jpeg"));
         }
         return contacts;
     }

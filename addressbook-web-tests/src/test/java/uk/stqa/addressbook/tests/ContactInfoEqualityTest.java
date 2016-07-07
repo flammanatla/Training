@@ -14,44 +14,45 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class ContactInfoEqualityTest extends TestBase {
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if (app.db().contacts().size() == 0) {
-      app.contact().create(new ContactData().
-              withFirstName("First").withLastName("Last").withAddress("scotland yard").
-              withHomeT("123").withMobileT("456").withWorkT("789").
-              withEmail("first.last@dreamcompany.com").withEmail2("qa@qa.com").withEmail3("qa-test@qa.com").
-              withPhoto("src/test/resources/logo.jpeg"));
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (app.db().contacts().size() == 0) {
+            app.contact().create(new ContactData().
+                    withFirstName("First").withLastName("Last").withAddress("scotland yard").
+                    withMobileT("456").withEmail("first.last@dreamcompany.com").
+                    withPhoto("src/test/resources/logo.jpeg"));
+        }
     }
-  }
 
-  @Test
-  public void testContactMainPage(){
-    app.goTo().HomePage();
-    ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    @Test
+    //verify equality between main page and edit form
+    public void testContactMainPage(){
+        app.goTo().HomePage();
+        ContactData contact = app.contact().all().iterator().next();
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-    assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
-    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
-  }
+        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    }
 
-  @Test(enabled = false)
-  public void testContactDetailsPage() {
-    app.goTo().HomePage();
-    ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromDetailsPage = app.contact().infoFromDetailsPage(contact);
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    @Test
+    //verify equality between Details page and Edit form
+    public void testContactDetailsPage() {
+        app.goTo().HomePage();
+        ContactData contact = app.db().contacts().iterator().next();
+        ContactData contactInfoFromDetailsPage = app.contact().infoFromDetailsPage(contact);
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(mergeEditInfo(contactInfoFromEditForm), equalTo(mergeDetailInfo(contactInfoFromDetailsPage)));
-  }
+        assertThat(mergeEditInfo(contactInfoFromEditForm), equalTo(mergeDetailInfo(contactInfoFromDetailsPage)));
+    }
 
-  private String mergePhones(ContactData contact) {
-    return asList(contact.getHomeT(), contact.getMobileT(), contact.getWorkT())
-            .stream().filter((s) -> ! s.equals(""))
-            .map(ContactInfoEqualityTest::cleanedPhones)
-            .collect(Collectors.joining("\n"));
-  }
+    private String mergePhones(ContactData contact) {
+        return asList(contact.getHomeT(), contact.getMobileT(), contact.getWorkT())
+                .stream().filter((s) -> ! s.equals(""))
+                .map(ContactInfoEqualityTest::cleanedPhones)
+                .collect(Collectors.joining("\n"));
+    }
 
   private String mergeEmails(ContactData contact) {
     return asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())

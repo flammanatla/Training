@@ -3,7 +3,7 @@
     "firstName": "First 0",
     "lastName": "Last 0",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 0",
+    "mobileT": "123 0",
     "email": "first0.last0@dreamcompany.com",
     "photo": "src/test/resources/logo.jpeg"
   },
@@ -11,7 +11,7 @@
     "firstName": "First 1",
     "lastName": "Last 1",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 1",
+    "mobileT": "123 1",
     "email": "first1.last1@dreamcompany.com",
     "photo": "src/test/resources/logo.jpeg"
   },
@@ -19,8 +19,16 @@
     "firstName": "First 2",
     "lastName": "Last 2",
     "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
-    "homeT": "123 2",
+    "mobileT": "123 2",
     "email": "first2.last2@dreamcompany.com",
+    "photo": "src/test/resources/logo.jpeg"
+  },
+  {
+    "firstName": "First 3",
+    "lastName": "Last 3",
+    "address": "Тридевятое царство\nДуб у Лукоморья №13\nУченому Коту",
+    "mobileT": "123 3",
+    "email": "first3.last3@dreamcompany.com",
     "photo": "src/test/resources/logo.jpeg"
   }
 ]

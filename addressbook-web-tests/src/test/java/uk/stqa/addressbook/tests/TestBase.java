@@ -3,13 +3,18 @@ package uk.stqa.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import uk.stqa.addressbook.appmanager.ApplicationManager;
 import uk.stqa.addressbook.model.ContactData;
+import uk.stqa.addressbook.model.Contacts;
 import uk.stqa.addressbook.model.GroupData;
+import uk.stqa.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +27,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by natla on 02/06/2016.
@@ -99,5 +107,26 @@ public class TestBase {
   @AfterMethod(alwaysRun = true)
   public void logTestStop(Method m){
     logger.info("Stop test" + m.getName());
+  }
+
+  public void verifyGroupListUI() {
+    if (Boolean.getBoolean("verifyUI")){
+      Groups dbGroups = app.db().groups();
+      Groups uiGroups = app.group().all();
+      assertThat(uiGroups, equalTo(dbGroups.stream().
+              map((g) -> new GroupData().withId(g.getId()).withName(g.getName())).
+              collect(Collectors.toSet())));
+    }
+  }
+
+  public void verifyContactListUI() {
+    if (Boolean.getBoolean("verifyUI")){
+      Contacts dbContacts = app.db().contacts();
+      Contacts uiContacts = app.contact().all();
+      assertThat(uiContacts, equalTo(dbContacts.stream().
+              map((c) -> new ContactData().withId(c.getId()).withFirstName(c.getFirstName()).
+                      withLastName(c.getLastName()).withAddress(c.getAddress())).
+                      collect(Collectors.toSet())));
+    }
   }
 }
