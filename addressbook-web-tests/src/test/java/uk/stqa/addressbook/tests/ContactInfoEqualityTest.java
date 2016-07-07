@@ -81,6 +81,7 @@ public class ContactInfoEqualityTest extends TestBase {
   }
 
   public static String cleanedInfo(String info) {
-    return info.replaceAll("\\s", "").replaceAll("(H|M|W):", "").replaceAll("\\(www.*?\\)", "");
+      return info.replaceAll("\\n\\n\\n(?s).*", "").replaceAll("\\s", "").
+            replaceAll("(H|M|W):", "").replaceAll("\\(www.*?\\)", "");
   }
 }

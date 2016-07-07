@@ -34,27 +34,28 @@ public class ContactHelper extends HelperBase{
   }
 
   public void fillContactForm(ContactData contactData, boolean create_or_modify) {
-    type(By.name("firstname"), contactData.getFirstName());
-    type(By.name("lastname"), contactData.getLastName());
-    attach(By.name("photo"), new File(contactData.getPhoto()));
+      type(By.name("firstname"), contactData.getFirstName());
+      type(By.name("lastname"), contactData.getLastName());
+      attach(By.name("photo"), new File(contactData.getPhoto()));
 
-    if (create_or_modify) {
-      String group = contactData.getGroup();
-      Select select = new Select(wd.findElement(By.name("new_group")));
-      if (group == null) {
-        select.selectByIndex(0); //[none] will be selected, help avoid NullPointerException
+      //create = true, modify = false
+      if (create_or_modify) {
+          Select select = new Select(wd.findElement(By.name("new_group")));
+          if (contactData.getGroups().size() == 0) {
+              select.selectByIndex(0); //[none] will be selected, help avoid NullPointerException
+          } else {
+              Assert.assertTrue(contactData.getGroups().size() == 1);
+              select.selectByVisibleText(contactData.getGroups().iterator().next().getName());
+          }
       } else {
-        select.selectByVisibleText(group); // specified in tests group will be selected
+          Assert.assertFalse(isElementPresent(By.name("new_group")));
       }
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
 
-    type(By.name("address"),contactData.getAddress());
-    type(By.name("home"),contactData.getHomeT());
-    type(By.name("mobile"),contactData.getMobileT());
-    type(By.name("work"),contactData.getWorkT());
-    type(By.name("email"),contactData.getEmail());
+      type(By.name("address"),contactData.getAddress());
+      type(By.name("home"),contactData.getHomeT());
+      type(By.name("mobile"),contactData.getMobileT());
+      type(By.name("work"),contactData.getWorkT());
+      type(By.name("email"),contactData.getEmail());
   }
 
   public void selectContacts(int index) {
