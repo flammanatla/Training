@@ -7,8 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
+import uk.stqa.addressbook.model.GroupData;
+import uk.stqa.addressbook.model.Groups;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -108,6 +111,48 @@ public class ContactHelper extends HelperBase{
     deleteSelectedContacts();
     isAlertPresent();
     contactsCache = null;
+  }
+
+  public void addToGroup(ContactData contactData) {
+    selectContactsById(contactData.getId());
+    Select select = new Select(wd.findElement(By.name("to_group")));
+    select.selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    click(By.name("add"));
+    contactsCache = null;
+  }
+
+  public void removeFromGroup(ContactData contactData) {
+    Select select = new Select(wd.findElement(By.name("group")));
+    select.selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    selectContactsById(contactData.getId());
+    click(By.name("remove"));
+    contactsCache = null;
+  }
+
+  public GroupData findUniqueGroup(ContactData contactBefore, Groups groupSet) {
+    GroupData selectedGroup = null;
+    Iterator<GroupData> i = groupSet.iterator();
+    while (i.hasNext()) {
+      GroupData g = i.next();
+      if (!contactBefore.getGroups().contains(g)) {
+        selectedGroup = g;
+        break;
+      }
+    }
+    return selectedGroup;
+  }
+
+  public ContactData findModifiedContact(Contacts contactSet, ContactData contactBefore) {
+    ContactData contactAfter = null;
+    Iterator<ContactData> i = contactSet.iterator();
+    while (i.hasNext()){
+      ContactData c = i.next();
+      if (c.getId() == contactBefore.getId()) {
+        contactAfter = c;
+        break;
+      }
+    }
+    return contactAfter;
   }
 
   public boolean contactAvailable() {

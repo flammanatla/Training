@@ -206,10 +206,12 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "lastName='" + lastName + '\'' +
+            "id=" + id +
             ", firstName='" + firstName + '\'' +
-            ", id=" + id +
+            ", lastName='" + lastName + '\'' +
+            ", mobileT='" + mobileT + '\'' +
             ", email='" + email + '\'' +
+            ", groups=" + groups +
             '}';
   }
 

@@ -25,12 +25,12 @@ public class GroupData {
   @Expose
   @Column(name = "group_header")
   @Type(type = "text")
-  private String header;
+  private String header = "";
 
   @Expose
   @Column(name = "group_footer")
   @Type(type = "text")
-  private String footer;
+  private String footer = "";
 
   public int getId() {
     return id;
@@ -78,8 +78,10 @@ public class GroupData {
   @Override
   public String toString() {
     return "GroupData{" +
-            "id='" + id + '\'' +
+            "footer='" + footer + '\'' +
+            ", header='" + header + '\'' +
             ", name='" + name + '\'' +
+            ", id=" + id +
             '}';
   }
 
