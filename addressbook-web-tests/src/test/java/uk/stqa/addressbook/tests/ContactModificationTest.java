@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 import uk.stqa.addressbook.model.ContactData;
 import uk.stqa.addressbook.model.Contacts;
 
-import java.io.IOException;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 

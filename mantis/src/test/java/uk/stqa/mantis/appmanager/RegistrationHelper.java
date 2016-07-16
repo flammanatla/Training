@@ -1,8 +1,7 @@
 package uk.stqa.mantis.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import uk.stqa.mantis.tests.TestBase;
+
 
 /**
  * Created by natla on 16/07/2016.
