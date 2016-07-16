@@ -16,3 +16,4 @@ workspace.xml
 *.json
 out
 addressbook-web-tests/src/test/logs
+mantis/src/test/logs
