@@ -20,11 +20,12 @@ public class ApplicationManager {
   private final Properties properties;
   private RegistrationHelper registrationHelper;
   private WebDriver wd;
-  private FtpHelper ftp;
-  private MailHelper mail;
-  private AdministratorHelper admin;
+  private FtpHelper ftpHelper;
+  private MailHelper mailHelper;
+  private AdminHelper adminHelper;
   private DbHelper dbHelper;
-  private UserHelper user;
+  private UserHelper userHelper;
+  private SoapHelper soapHelper;
 
   public ApplicationManager(String browser) {
       this.browser = browser;
@@ -58,31 +59,31 @@ public class ApplicationManager {
   }
 
   public FtpHelper ftp(){
-    if (ftp == null) {
-      ftp = new FtpHelper(this);
+    if (ftpHelper == null) {
+      ftpHelper = new FtpHelper(this);
     }
-    return ftp;
+    return ftpHelper;
   }
 
   public MailHelper mail(){
-    if (mail == null) {
-      mail = new MailHelper(this);
+    if (mailHelper == null) {
+      mailHelper = new MailHelper(this);
     }
-    return mail;
+    return mailHelper;
   }
 
-  public AdministratorHelper admin(){
-    if (admin == null) {
-      admin = new AdministratorHelper(this);
+  public AdminHelper admin(){
+    if (adminHelper == null) {
+      adminHelper = new AdminHelper(this);
     }
-    return admin;
+    return adminHelper;
   }
 
   public UserHelper user(){
-    if (user == null) {
-      user = new UserHelper(this);
+    if (userHelper == null) {
+      userHelper = new UserHelper(this);
     }
-    return user;
+    return userHelper;
   }
 
   public DbHelper db() {
@@ -90,6 +91,13 @@ public class ApplicationManager {
       dbHelper = new DbHelper(this);
     }
     return dbHelper;
+  }
+
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 
   public WebDriver getDriver() {

@@ -13,6 +13,7 @@ dependencies {
     compile 'ch.qos.logback:logback-classic:1.1.7'
     compile 'mysql:mysql-connector-java:6.0.3'
     compile 'org.hibernate:hibernate-core:5.2.1.Final'
+    compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 }
 
 

@@ -8,9 +8,9 @@ import uk.stqa.mantis.tests.TestBase;
 /**
  * Created by natla on 16/07/2016.
  */
-public class AdministratorHelper extends HelperBase{
+public class AdminHelper extends HelperBase{
 
-  public AdministratorHelper(ApplicationManager app) {
+  public AdminHelper(ApplicationManager app) {
     super(app);
   }
 
