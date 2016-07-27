@@ -1,8 +1,8 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
 import org.openqa.selenium.By;
+import uk.stqa.appmanager.ApplicationManager;
 import uk.stqa.mantis.model.UserData;
-import uk.stqa.mantis.tests.TestBase;
 
 
 /**

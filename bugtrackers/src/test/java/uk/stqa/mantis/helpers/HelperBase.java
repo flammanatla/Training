@@ -1,7 +1,8 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import uk.stqa.appmanager.ApplicationManager;
 
 import java.io.File;
 

@@ -1,6 +1,5 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
-import org.apache.commons.net.ftp.FTPClient;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -8,6 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.List;
+
+import uk.stqa.appmanager.ApplicationManager;
 import uk.stqa.mantis.model.Users;
 import uk.stqa.mantis.model.UserData;
 

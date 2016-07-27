@@ -1,9 +1,11 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
+import uk.stqa.bugify.helpers.RestHelper;
+import uk.stqa.mantis.appmanager.*;
 
 import java.io.File;
 import java.io.FileReader;
@@ -26,6 +28,7 @@ public class ApplicationManager {
   private DbHelper dbHelper;
   private UserHelper userHelper;
   private SoapHelper soapHelper;
+  private RestHelper restHelper;
 
   public ApplicationManager(String browser) {
       this.browser = browser;
@@ -98,6 +101,13 @@ public class ApplicationManager {
       soapHelper = new SoapHelper(this);
     }
     return soapHelper;
+  }
+
+  public RestHelper rest() {
+    if (restHelper == null) {
+      restHelper = new RestHelper(this);
+    }
+    return restHelper;
   }
 
   public WebDriver getDriver() {

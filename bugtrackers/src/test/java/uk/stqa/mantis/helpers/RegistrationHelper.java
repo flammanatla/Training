@@ -1,6 +1,7 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
 import org.openqa.selenium.By;
+import uk.stqa.appmanager.ApplicationManager;
 
 
 /**

@@ -1,6 +1,7 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
 import biz.futureware.mantis.rpc.soap.client.*;
+import uk.stqa.appmanager.ApplicationManager;
 import uk.stqa.mantis.model.Issue;
 import uk.stqa.mantis.model.Project;
 

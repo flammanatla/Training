@@ -1,6 +1,7 @@
-package uk.stqa.mantis.appmanager;
+package uk.stqa.mantis.helpers;
 
 import org.apache.commons.net.ftp.FTPClient;
+import uk.stqa.appmanager.ApplicationManager;
 
 import java.io.File;
 import java.io.FileInputStream;
