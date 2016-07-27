@@ -2,16 +2,13 @@ package uk.stqa.mantis.tests;
 
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import org.openqa.selenium.remote.BrowserType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.SkipException;
 import org.testng.annotations.*;
-import uk.stqa.mantis.appmanager.ApplicationManager;
+import uk.stqa.appmanager.ApplicationManager;
 
 import javax.xml.rpc.ServiceException;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;

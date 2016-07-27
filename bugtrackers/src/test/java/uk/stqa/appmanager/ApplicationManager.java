@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 import uk.stqa.bugify.helpers.RestHelper;
-import uk.stqa.mantis.appmanager.*;
+import uk.stqa.mantis.helpers.*;
 
 import java.io.File;
 import java.io.FileReader;

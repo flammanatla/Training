@@ -1,7 +1,7 @@
 package uk.stqa.mantis.tests;
 
 import org.testng.annotations.Test;
-import uk.stqa.mantis.appmanager.HttpSession;
+import uk.stqa.mantis.helpers.HttpSession;
 
 import java.io.IOException;
 
