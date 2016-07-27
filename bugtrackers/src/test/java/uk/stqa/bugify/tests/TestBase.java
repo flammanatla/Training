@@ -2,6 +2,8 @@ package uk.stqa.bugify.tests;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.response.Response;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.util.EntityUtils;
@@ -33,16 +35,15 @@ public class TestBase {
   }
 
   boolean isIssueClosed(int issueId) throws IOException {
-    HttpResponse response = app.rest().getExecutor().
-            execute(Request.Get(String.format("http://demo.bugify.com/api/issues/%s.json", issueId))).returnResponse();
 
-    int code = response.getStatusLine().getStatusCode();
+    Response response = RestAssured.get(String.format("http://demo.bugify.com/api/issues/%s.json", issueId));
+    int code = response.getStatusCode();
     if (code == 404) {
       System.out.println("The specified issue does not exist");
       return true;
     }
 
-    String json = EntityUtils.toString(response.getEntity());
+    String json = response.getBody().asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issue = parsed.getAsJsonObject().getAsJsonArray("issues").get(0);
     String state = issue.getAsJsonObject().getAsJsonPrimitive("state_name").getAsString();

@@ -16,8 +16,8 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.2.1.Final'
     compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
     compile 'org.apache.httpcomponents:fluent-hc:4.5.1'
+    compile 'com.jayway.restassured:rest-assured:2.9.0'
 }
-
 
 task testGroups (type : Test) {
     useTestNG() {
