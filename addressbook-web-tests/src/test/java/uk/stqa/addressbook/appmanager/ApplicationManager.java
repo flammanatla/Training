@@ -51,7 +51,7 @@ public class ApplicationManager {
         } else {
           DesiredCapabilities capabilities = new DesiredCapabilities();
           capabilities.setBrowserName(browser);
-          capabilities.setPlatform(Platform.fromString(properties.getProperty("platform", "mac")));
+          capabilities.setPlatform(Platform.fromString(properties.getProperty("platform", "Win8_1")));
           wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
         }
 
