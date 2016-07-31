@@ -12,7 +12,6 @@ gradle-app.setting
 .gradletasknamecache
 workspace.xml
 *.csv
-*.xml
 *.json
 out
 addressbook-web-tests/src/test/logs

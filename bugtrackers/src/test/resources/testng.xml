@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="1" >
+    <test name="Mantis">
+        <classes>
+            <class name="uk.stqa.mantis.tests.LoginTest" />
+            <class name="uk.stqa.mantis.tests.RegistrationTest" />
+            <class name="uk.stqa.mantis.tests.ResetPasswordTest" />
+            <class name="uk.stqa.mantis.tests.SoapTest" />
+        </classes>
+    </test>
+</suite>
