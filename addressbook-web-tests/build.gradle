@@ -15,6 +15,23 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.2.1.Final'
 }
 
+task full (type : Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng-full.xml'
+    }
+    if (project.hasProperty("target")) {
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty("platform")) {
+        systemProperty 'platform', "${platform}"
+    }
+    if (project.hasProperty("browser")) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty("verifyUI")) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
+}
 
 task testGroups (type : Test) {
     useTestNG() {
