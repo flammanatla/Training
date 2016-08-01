@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import uk.stqa.addressbook.appmanager.ApplicationManager;
 import uk.stqa.addressbook.model.ContactData;
@@ -34,6 +35,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by natla on 02/06/2016.
  */
+
+@Listeners(MyTestListener.class)
 public class TestBase {
 
   Logger logger = LoggerFactory.getLogger(TestBase.class);
@@ -42,8 +45,9 @@ public class TestBase {
           new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
   @BeforeSuite
-  public void setUp() throws Exception {
+  public void setUp(ITestContext context) throws Exception {
     app.init();
+    context.setAttribute("app", app);
   }
 
   @DataProvider

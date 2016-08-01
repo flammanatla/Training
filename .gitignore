@@ -16,3 +16,4 @@ out
 addressbook-web-tests/src/test/logs
 mantis/src/test/logs
 bugtrackers/src/test/logs
+addressbook-web-tests/allure-report
